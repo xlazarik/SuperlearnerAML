@@ -1,7 +1,7 @@
 Activity 1 Practice with a Super Learner [**]
 • The goal in stacking is to ensemble strong, diverse sets of learners together.
 • This involves training a second-level metalearner to "glue them" together using data.
-• The algorithm that learns the optimal combination of the base learner ts is now called
+• The algorithm that learns the optimal combination of the base learner fits is now called
 the "Super Learner".
 • A delicate part is how to perform the resampling to distribute and eventually reuse the
 available data.
@@ -32,4 +32,5 @@ and how to choose the best model.
 
 Useful links:
 https://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html
+
 https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/stacked-ensembles.html
