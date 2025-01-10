@@ -1,3 +1,15 @@
+# Authors: Vladimir Lazarik, David Candela
+
+## Project requires various packages such as H2o and altair
+Installation via pip is available at the head of each jupyter notebook and needs to be uncommented if issues are encountered.
+
+Code was run through jupyter lab as jupyter notebooks.
+
+Python version 3.8
+
+
+#############################################################################################
+
 Activity 1 Practice with a Super Learner [**]
 • The goal in stacking is to ensemble strong, diverse sets of learners together.
 • This involves training a second-level metalearner to "glue them" together using data.
