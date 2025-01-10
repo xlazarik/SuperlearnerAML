@@ -8,6 +8,35 @@ All of the text is part of the executable notebook where it is accompanied by re
 # TODO: Maybe some feature analysis and selection + input format description
 Possible to add screenshots from the code notebook or add dataset loading and analysis here
 
+## Data Analysis
+
+The dataset consists of 58 columns
+
++ 48 columns with the name `words_freq_${WORD}` that indicate the **percentage** (not the frequency but the normalized frequency in the range 0 to 100) of the words in the document that were said word.
++ 6 columns with the name `char_freq_${ASCII_CODE}` that indicates the **percentage** of the characters that the character corresponding to that ascii code accounts for.
++ 3 columns with the name `capital_run_length_${METRIC}` that indicate the value of that metric for consecutive sequences of capital letters.
++ 1 column with the name `type` that indicates wether the message was spam or not.
+
+For more detailed information you can go to the [original dataset](https://archive.ics.uci.edu/dataset/94/spambase) from the machine learning repository.  
+
+From this plot we see that for both frequency variables, the values are in most cases 0, as in almost all but `will`, `you`, `your` and `+` are the only ones were the median is above zero and even at the 75 percentile only eleven have nonzero values.
+
+![title](ablations/freq_distrib.png)
+
+Checking the distribution of the values of word frequencies (top) and character frequencies (bottom), we can see more clearly the spike at zero (in red). With the full distribution shown, see the different behaviour at zero (a spike) and after zero (an exponentail decay), this means that the disribution of the variables is a mixture of a discrete and continuous variable. Another notable fact is that for the characters the rate for the exponential decay is faster than for words.
+
+![title](ablations/top_tree.png)
+
+Measuring the importance of the features using a random forest, we get that the two most important features are the characters `!` (%21) and `$` (%24) respectively, then followed by the words `remove` and `free`, After that come all three variables about capitalization, followed then by a list of words.
+
+With this we see that almost half of the most important variables fall in the captegories of:
++ Highlighting or emphasizing: the character `!` and writting in capital letters
++ Money: the character `$`, the words `free`, `money`, `000` (probably as part of £1.000 separated by the parser) or `buisness`
+
+This two categories are two of the main components of scam emails for the time the dataset was made (1999), for the importance of what the contents of the email entailed and the oportinity of making money by previously paying a little bit.
+
+#### Is SPAM class underepresented?
+
 Our dataset consists of n=4601 records for to which one of two classes 0/1 (no-spam/spam) is assigned so we are dealing with binary classification.
 
 We have followed the methodology from the paper to select a fitting choice of hyperparameters, number of folds for cross-validation and evaluation metric.
@@ -253,3 +282,4 @@ capture the relationships in the data well enough.
 * The best stack combines Random Forest and Gradient Boosting, both with 50 trees which are both the default configurations that we would select if using these methods in separate.
 
 * Depth unbounded tree based ensembles performed worse in general compared to the ones bounded with max tree depth 10.
+
