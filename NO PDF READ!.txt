@@ -1,0 +1,8 @@
+We didn't manage to export jupyter notebooks to pdf's due to technical difficulties.
+
+As an alternative we provide HTML export of the notebook and markdown (with imgs) - readable just as pdf or the printed version of the HTML export as pdf.
+
+Also as a convenience (simce execution of notebooks can take quite a long) a an HTML and print PDF version of the superlearner notebook.
+
+
+Thank you for understanding.
